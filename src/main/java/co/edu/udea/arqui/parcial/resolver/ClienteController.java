@@ -1,18 +1,15 @@
 package co.edu.udea.arqui.parcial.resolver;
 
 import co.edu.udea.arqui.parcial.entity.Cliente;
-import co.edu.udea.arqui.parcial.entity.Pedido;
 import co.edu.udea.arqui.parcial.service.ClienteService;
-import co.edu.udea.arqui.parcial.service.PedidoService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/cliente")
+@RequestMapping("/api/v1/clientes")
 public class ClienteController {
     private final ClienteService clienteService;
 
@@ -20,8 +17,15 @@ public class ClienteController {
         this.clienteService = clienteService;
     }
 
+    // Obtener un cliente por su UUID
     @GetMapping("/{uuid}")
-    public Cliente getCliente(@PathVariable("uuid") UUID uuid) {
-        return clienteService.getCliente(uuid);
+    public ResponseEntity<?> getCliente(@PathVariable("uuid") UUID uuid) {
+        try {
+            Cliente cliente = clienteService.getCliente(uuid);
+            return ResponseEntity.ok(cliente);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Cliente no encontrado con UUID: " + uuid);
+        }
     }
 }
