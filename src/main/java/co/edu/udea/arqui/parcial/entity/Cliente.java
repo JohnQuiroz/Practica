@@ -1,3 +1,4 @@
+
 package co.edu.udea.arqui.parcial.entity;
 
 import jakarta.persistence.*;

@@ -36,4 +36,6 @@ public class Pedido {
 
     @Column(name = "hora_entrega")
     private Calendar horaEntrega;
+
 }
+
