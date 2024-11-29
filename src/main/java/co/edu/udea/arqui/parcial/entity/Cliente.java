@@ -21,7 +21,7 @@ public class Cliente {
     @Column(name = "uuid")
     private UUID uuid;
 
-    @Column(name = "id")
+    @Column(name = "id", unique = true)
     private Integer id;
 
     @Column(name = "nombre")
