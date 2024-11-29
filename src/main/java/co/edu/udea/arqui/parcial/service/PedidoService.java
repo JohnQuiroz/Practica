@@ -1,19 +1,17 @@
 package co.edu.udea.arqui.parcial.service;
 
-import co.edu.udea.arqui.parcial.dao.IpedidoDao;
+import co.edu.udea.arqui.parcial.dao.IPedidoDao;
 import co.edu.udea.arqui.parcial.entity.Pedido;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Optional;
 
 @Service
 @Transactional
 public class PedidoService {
 
     @Autowired
-    private IpedidoDao ipedidoDao;
+    private IPedidoDao ipedidoDao;
 
     // Obtener un pedido por ID
     public Pedido getPedido(Integer id) {

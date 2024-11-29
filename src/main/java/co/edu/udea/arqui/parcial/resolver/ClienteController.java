@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -27,5 +28,25 @@ public class ClienteController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("Cliente no encontrado con UUID: " + uuid);
         }
+    }
+
+    @GetMapping("/")
+    public List<Cliente> getAllClientes() {
+        return clienteService.getAllClientes();
+    }
+
+    @PostMapping("/")
+    public Cliente createCliente(@RequestBody Cliente cliente){
+        return clienteService.createCliente(cliente);
+    }
+
+    @PostMapping("/update")
+    public Cliente updateCliente(@RequestBody Cliente clienteDetails){
+        return clienteService.updateCliente(clienteDetails.getUuid(), clienteDetails);
+    }
+
+    @PostMapping("/delete/{uuid}")
+    public void deleteCliente(@PathVariable("uuid") UUID uuid){
+        clienteService.deleteCliente(uuid);
     }
 }

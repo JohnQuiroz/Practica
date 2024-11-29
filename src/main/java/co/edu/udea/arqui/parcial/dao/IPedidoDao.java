@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface IpedidoDao extends JpaRepository<Pedido, Integer> {
+public interface IPedidoDao extends JpaRepository<Pedido, Integer> {
 
 
     // Metodo para obtener un pedido por nombre del cliente
