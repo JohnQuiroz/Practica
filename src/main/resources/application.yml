@@ -1,0 +1,9 @@
+springdoc:
+  api-docs:
+    enabled: true
+    title: Mi API
+    description: Documentación de la API del restaurante
+    version: openapi_3_1
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
